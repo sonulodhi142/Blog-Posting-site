@@ -1,0 +1,47 @@
+{% extends "base.html" %}  
+
+{% block title %}
+    Blog App
+{% endblock %}
+
+{% block content %}
+    
+
+
+    
+
+<div class="container-fluid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+  {% for blog in Blogs %}
+  <div class="card" style="width: 18rem; margin: 1rem; text-align: center;">
+      <img src="{{blog.photo.url}}" class="card-img-top" alt="..." style="width: 100%; height: 200px; object-fit: cover;">
+      <div class="card-body">
+          <h5 class="card-title">{{blog.name}}</h5>
+          <p class="card-text" style="height: 4.5rem; overflow: hidden; text-overflow: ellipsis;">{{blog.text}}</p>
+          
+          {% if blog.user == user %}
+          <a href="{% url 'blog_edit' blog.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
+          {% endif %}
+      </div>
+  </div>
+  {% endfor %}
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var buttons = document.querySelectorAll('.read-more-btn');
+
+      buttons.forEach(function(button) {
+          button.addEventListener('click', function() {
+              var text = this.previousElementSibling;
+              if (text.classList.contains('expanded')) {
+                  text.classList.remove('expanded');
+                  this.textContent = 'Read More';
+              } else {
+                  text.classList.add('expanded');
+                  this.textContent = 'Read Less';
+              }
+          });
+      });
+  });
+</script>
+{% endblock %}
