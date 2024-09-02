@@ -1,5 +1,5 @@
 from django import forms
-from .models import blog,test
+from .models import blog
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -14,7 +14,3 @@ class userForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
-class testForm(forms.ModelForm):
-    class Meta:
-        model = test
-        fields = ['fname', 'lname']

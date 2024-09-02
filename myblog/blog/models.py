@@ -14,10 +14,11 @@ class blog(models.Model):
     def __str__(self):
         return f'{self.user.username} - {self.text[:10]}'
     
-class test(models.Model):
-    fname = models.CharField(max_length=55)
-    lname = models.CharField(max_length=50)
-    createdAt = models.DateTimeField(auto_now_add=True)
+class contact(models.Model):
+    name = models.CharField(max_length=20)
+    message = models.TextField()
+    phone = models.CharField(max_length=15)
 
     def __str__(self):
-        return f'{self.fname}'
+        return f'{self.name}'
+

@@ -72,6 +72,9 @@ def user_logout(request):
     if request.method == 'POST':
         print("Logout function called") 
         logout(request)
-    return redirect('login') # Temporary response to debug
+    return redirect('login')
+
+def about(request):
+    return render(request, 'about.html')
 
 
