@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import blog
+from .models import blog, contact
 from .forms import blogForm, userForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout
@@ -76,5 +76,17 @@ def user_logout(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def contect(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        message = request.POST.get('message')
+        phone = request.POST.get('phone')
+
+        Message = contact(name=name, message=message, phone=phone)
+
+        Message.save()
+        return redirect('blog_list')
+    return render(request, 'contect.html')
 
 
