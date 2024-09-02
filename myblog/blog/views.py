@@ -87,6 +87,6 @@ def contect(request):
 
         Message.save()
         return redirect('blog_list')
-    return render(request, 'contect.html')
+    return render(request, 'contact.html')
 
 
