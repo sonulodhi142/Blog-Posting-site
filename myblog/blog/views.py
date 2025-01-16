@@ -70,7 +70,6 @@ def register(request):
 
 def user_logout(request):
     if request.method == 'POST':
-        print("Logout function called") 
         logout(request)
     return redirect('login')
 
